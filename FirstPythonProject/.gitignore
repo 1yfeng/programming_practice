@@ -1,0 +1,26 @@
+# 依赖包
+node_modules/
+dist/
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# 环境配置文件（包含敏感信息）
+.env
+*.local
+
+# 编辑器配置
+.vscode/
+.idea/
+
+# Python 字节码
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 如果你使用了虚拟环境（这也是必须忽略的）
+venv/
+.venv/
+env/
