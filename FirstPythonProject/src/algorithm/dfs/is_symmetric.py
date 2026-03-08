@@ -101,6 +101,28 @@ class IsSymmetric:
 
         return in_order_traversal(root.left, root.right)
     
+    def is_symmetric_3(self, root: TreeNode) -> bool:
+        if root is None:
+            return True
+
+        def check(left_node: TreeNode, right_node: TreeNode) -> bool:
+            if (not left_node) and (not right_node) :
+                return True
+
+            if (not left_node) or (not right_node) :
+                return False
+
+            if left_node.val != right_node.val:
+                return False
+            
+            if not check(left_node.left, right_node.right):
+                return False
+            if not check(left_node.right, right_node.left):
+                return False
+            return True
+
+        return check(root.left, root.right)
+    
     def is_symmetri_ai(self, root: TreeNode) -> bool:
         if root is None:
             return True
