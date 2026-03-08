@@ -122,6 +122,72 @@ class IsSymmetric:
             return True
 
         return check(root.left, root.right)
+
+    def is_symmetric_iteration(self, root: TreeNode) -> bool:
+        if not root:
+            return True
+        
+        left_stack = [root.left]
+        right_stack = [root.right]
+        while left_stack and right_stack:
+            right_node = right_stack.pop()
+            left_node = left_stack.pop()
+            #visit 
+            if not right_node and not left_node:
+                continue
+            if not right_node or not left_node:
+                return False
+            if right_node.val != left_node.val:
+                return False
+            
+            left_stack.append(left_node.right)
+            right_stack.append(right_node.left)
+            
+            right_stack.append(right_node.right)
+            left_stack.append(left_node.left)
+        
+        return True
+    
+    def is_symmetric_iteration_2(self, root: TreeNode) -> bool:
+        if not root:
+            return True
+        
+        left_stack = []
+        right_stack = []
+        last_left_traversal = root.left
+        last_right_traversal = root.right
+        while (last_left_traversal or left_stack) and (last_right_traversal or right_stack):
+            #check leftest child
+            while last_left_traversal and last_right_traversal:
+                left_stack.append(last_left_traversal)
+                last_left_traversal = last_left_traversal.left
+                
+                right_stack.append(last_right_traversal)
+                last_right_traversal = last_right_traversal.right     
+
+            if last_left_traversal or last_right_traversal:
+                return False
+            
+            last_left_traversal = left_stack.pop() 
+            last_right_traversal = right_stack.pop() 
+            #node.left == None
+            # check node
+            if last_left_traversal.val != last_right_traversal.val:
+                return False
+            
+            last_left_traversal = last_left_traversal.right
+            last_right_traversal = last_right_traversal.left
+        if left_stack or right_stack:
+            return False
+
+        return True
+        
+
+
+
+
+
+        
     
     def is_symmetri_ai(self, root: TreeNode) -> bool:
         if root is None:
