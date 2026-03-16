@@ -1,6 +1,7 @@
+from typing import List
 
 class FindMaxXOR:
-    // try array - list
+    # try array - list
 
     def find_maximum_xor_list(self, nums: List[int]) -> int: 
         if not nums:
