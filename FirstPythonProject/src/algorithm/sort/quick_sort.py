@@ -13,12 +13,13 @@ class QuickSort:
         while start < end:
             while start < end and pivot < nums[end]:
                 end -= 1
-            if start != end:
-                nums[start] = nums[end]
-            
+            if start == end:
+                break
+            nums[start] = nums[end]
             while start < end and pivot >= nums[start]:
                 start += 1
-            if start != end:
-                nums[end] = nums[start]
+            if start == end:
+                break
+            nums[end] = nums[start]
         nums[start] = pivot
         return start
